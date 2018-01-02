@@ -3,11 +3,24 @@ module Tests exposing (..)
 import Test exposing (..)
 import Expect
 import Dict exposing (Dict)
-import WordCount exposing (wordCount)
+import WordCount exposing (wordCount, parseWords)
 
 
 tests : Test
 tests =
+    describe "all tests"
+        [ wordCountTests
+        , parseWordsTests
+        ]
+
+
+parseWordsTests =
+    describe "Parse Words"
+        [ test "pass" <| \() -> Expect.equal [ "hello", "world" ] (parseWords "Hello World!")
+        ]
+
+
+wordCountTests =
     describe "Word Count"
         [ test "count one word" <|
             \() ->
