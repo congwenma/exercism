@@ -7,17 +7,20 @@ rangeTo =
     List.range 0
 
 
-squareOfSum n =
-    (rangeTo n
-        |> List.foldl (+) 0
-    )
-        ^ 2
+sum =
+    List.foldl (+) 0
 
 
-sumOfSquares n =
-    rangeTo n
-        |> List.map (\n -> n ^ 2)
-        |> List.foldl (+) 0
+square =
+    flip (^) 2
+
+
+squareOfSum =
+    square << sum << rangeTo
+
+
+sumOfSquares =
+    sum << List.map square << rangeTo
 
 
 difference n =
